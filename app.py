@@ -7,7 +7,6 @@
 import os
 
 from app_utils import load_dotenv
-from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 
 from shiny.express import ui
@@ -18,7 +17,7 @@ from src.think import (
 # app, or set them in a file named `.env`. The `python-dotenv` package will load `.env`
 # as environment variables which can later be read by `os.getenv()`.
 load_dotenv()
-# llm = ChatOpenAI(api_key=os.environ.get("OPENAI_API_KEY"))  # type: ignore
+# Set Your GROQ_API_KEY in `.env`
 llm = ChatGroq(temperature=0, model="deepseek-r1-distill-llama-70b")
 
 # Set some Shiny page options
