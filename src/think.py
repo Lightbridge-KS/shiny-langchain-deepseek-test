@@ -62,9 +62,22 @@ def extract_answer(string: str):
 
 
 def display_message(string: str):
-    thinking = extract_thinking(string)
-    answer = extract_answer(string)
-    return f"""<details>
+    """
+    Display message with or without thinking block.
+    
+    Args:
+        string: The input string that may or may not contain <think> tags
+        
+    Returns:
+        Formatted message with thinking in collapsible section if the message starts with <think> tags,
+        or the original message otherwise
+    """
+    import re
+    # Check if the string starts with a <think> tag (allowing for whitespace)
+    if re.match(r'^\s*<think>', string):
+        thinking = extract_thinking(string)
+        answer = extract_answer(string)
+        return f"""<details>
     <summary>Reason</summary>
     {thinking}
 </details>
@@ -73,3 +86,6 @@ def display_message(string: str):
 
 {answer}
 """
+    else:
+        # If doesn't start with <think>, return the message as is
+        return string
