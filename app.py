@@ -12,8 +12,6 @@ from langchain_groq import ChatGroq
 
 from shiny.express import ui
 from src.think import (
-    extract_thinking,
-    display_thinking,
     display_message
 )
 # Either explicitly set the OPENAI_API_KEY environment variable before launching the
@@ -25,7 +23,7 @@ llm = ChatGroq(temperature=0, model="deepseek-r1-distill-llama-70b")
 
 # Set some Shiny page options
 ui.page_opts(
-    title="Hello LangChain Chat Models",
+    title="LangChain DeepSeek R1 Chat",
     fillable=True,
     fillable_mobile=True,
 )
